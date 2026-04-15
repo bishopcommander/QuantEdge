@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Clean Flat Theme variables */
+  --bg-dark: #121212;
+  --bg-card: #1e1e1e;
+  --bg-card-hover: #2a2a2a;
+  --border-light: #2d2d2d;
+  --border-focus: #10B981;
+  
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  
+  /* One single flat accent */
+  --accent-primary: #10B981; 
+  --accent-red: #ef4444; 
+  
+  /* Fallbacks mapped to primary */
+  --accent-blue: var(--accent-primary);
+  --accent-cyan: var(--accent-primary);
+  --accent-purple: var(--accent-primary);
+  --accent-emerald: var(--accent-primary);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
+
+/* Utility Panels (Formerly Glassmorphism, now pure flat) */
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  box-shadow: none; /* No more box shadows / glowing */
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.glass-card:hover {
+  border-color: #4b5563;
+  background: var(--bg-card-hover);
+}
+
+.glass-panel {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* Button Utilities */
+.btn-primary {
+  background: var(--accent-primary);
+  color: #ffffff;
+  border: none;
+  padding: 0.6rem 1.25rem;
+  border-radius: 2px;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  box-shadow: none; /* Removed neon glow */
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-light);
+  padding: 0.75rem 1.5rem;
+  border-radius: 2px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  background: #2a2a2a;
+  border-color: #6b7280;
+}
+
+/* Layout overrides */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--border-light);
+  background-color: var(--bg-dark);
+}
+
+.top-nav h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text-main);
+  text-transform: uppercase;
+}
+
+.top-nav h1 span {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  margin-left: 0;
+  text-transform: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  padding: 0.5rem 0.25rem;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+}
+
+.nav-links a:hover {
+  color: var(--text-main);
+}
+
+.nav-links a.active {
+  color: var(--text-main);
+  border-bottom: 2px solid var(--accent-primary);
+}
+
+.main-content {
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Form inputs & Selects */
+select.glass-select, input.glass-input {
+  background: var(--bg-dark);
+  color: var(--text-main);
+  border: 1px solid var(--border-light);
+  border-radius: 2px;
+  padding: 0.5rem 1rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+select.glass-select:focus, input.glass-input:focus {
+  border-color: var(--accent-primary);
+}
+
+/* Headings */
+h2.page-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  letter-spacing: -0.5px;
+}
+
+/* Value/Trend styling */
+.trend-positive { color: var(--accent-primary); text-shadow: none; }
+.trend-negative { color: var(--accent-red); text-shadow: none; }
+.trend-neutral { color: var(--text-muted); }
+
+/* Animation Utils */
+@keyframes fadeInSlideUp {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeInSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+
+/* Pulse animation removed for flat design */
+.neon-text {
+  color: var(--accent-primary);
+}

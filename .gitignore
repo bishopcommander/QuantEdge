@@ -1,0 +1,23 @@
+# Global gitignore
+node_modules/
+dist/
+build/
+.env
+.idea/
+.vscode/
+
+# Backend (Spring Boot/Maven)
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+.mvn/
+*.log
+
+# Frontend
+quantedge-frontend/dist/
+quantedge-frontend/node_modules/
+quantedge-frontend/.env
+*.sqlite
