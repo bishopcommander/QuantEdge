@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useRegion } from '../context/RegionContext.jsx';
 
 const Dashboard = () => {
+  const { formatCurrency } = useRegion();
   const [symbol, setSymbol] = useState('AAPL');
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -70,15 +72,15 @@ const Dashboard = () => {
           
           <div className="indicators-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
             <div className="glass-card" style={{ padding: '1.5rem' }}>
-              <h4 style={{ color: 'var(--text-muted)', fontSize: '0.85rem', textTransform: 'uppercase', marginBottom: '1rem' }}>50-Day SMA</h4>
-              <p className="value" style={{ fontSize: '2rem', fontWeight: '600' }}>${data.sma50}</p>
+              <p className="label" style={{ fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>50-Day Moving Avg</p>
+              <p className="value" style={{ fontSize: '2rem', fontWeight: '600' }}>{formatCurrency(data.sma50)}</p>
             </div>
             <div className="glass-card" style={{ padding: '1.5rem' }}>
-              <h4 style={{ color: 'var(--text-muted)', fontSize: '0.85rem', textTransform: 'uppercase', marginBottom: '1rem' }}>200-Day SMA</h4>
-              <p className="value" style={{ fontSize: '2rem', fontWeight: '600' }}>${data.sma200}</p>
+              <p className="label" style={{ fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>200-Day Moving Avg</p>
+              <p className="value" style={{ fontSize: '2rem', fontWeight: '600' }}>{formatCurrency(data.sma200)}</p>
             </div>
             <div className="glass-card" style={{ padding: '1.5rem' }}>
-              <h4 style={{ color: 'var(--text-muted)', fontSize: '0.85rem', textTransform: 'uppercase', marginBottom: '1rem' }}>14-Day RSI</h4>
+              <p className="label" style={{ fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>14-Day RSI</p>
               <p className="value" style={{ fontSize: '2rem', fontWeight: '600' }}>{data.rsi14}</p>
             </div>
           </div>

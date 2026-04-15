@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useRegion } from '../context/RegionContext';
 import StockChart from '../components/StockChart';
 import './LandingPage.css';
 
 const LandingPage = () => {
   const { token, loading } = useAuth();
+  const { formatCurrency } = useRegion();
 
   return (
     <div className="landing-container">
@@ -59,8 +61,8 @@ const LandingPage = () => {
           <div className="feature-card">
             <div style={{ marginBottom: '20px', background: 'var(--bg-dark)', padding: '15px', borderRadius: '4px', border: '1px solid var(--border-light)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '8px', borderBottom: '1px solid var(--border-light)', paddingBottom: '4px' }}><span>Asset</span><span>Price</span></div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.95rem', fontWeight: '500', marginBottom: '4px' }}><span>AAPL</span><span style={{ color: 'var(--accent-primary)' }}>$220.50</span></div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.95rem', fontWeight: '500' }}><span>NVDA</span><span style={{ color: 'var(--accent-primary)' }}>$118.25</span></div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.95rem', fontWeight: '500', marginBottom: '4px' }}><span>AAPL</span><span style={{ color: 'var(--accent-primary)' }}>{formatCurrency(220.50)}</span></div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.95rem', fontWeight: '500' }}><span>NVDA</span><span style={{ color: 'var(--accent-primary)' }}>{formatCurrency(118.25)}</span></div>
             </div>
             <h3>Portfolio Tracking</h3>
             <p>Monitor real-time positions and calculate your immediate profit and loss with fluid data synchronization.</p>

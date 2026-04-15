@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactApexChart from 'react-apexcharts';
+import { useRegion } from '../context/RegionContext.jsx';
 
 const StockChart = ({ symbol, data, type = 'area', color = '#10B981', interactive = false }) => {
+  const { getCurrencySymbol } = useRegion();
   // Parse data and handle potential dates instead of just indexes
   const chartData = data && data.length > 0 
     ? data.map((d, i) => {
@@ -49,7 +51,7 @@ const StockChart = ({ symbol, data, type = 'area', color = '#10B981', interactiv
       show: interactive,
       labels: { 
         style: { colors: '#9ca3af' },
-        formatter: (val) => `$${val.toFixed(2)}`
+        formatter: (val) => `${getCurrencySymbol()}${val.toFixed(2)}`
       } 
     },
     dataLabels: { enabled: false }

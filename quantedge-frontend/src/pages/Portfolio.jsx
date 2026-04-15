@@ -115,7 +115,7 @@ const Portfolio = () => {
                       <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Digital Asset</div>
                     </div>
                   </td>
-                  <td style={{ padding: '1.25rem', color: 'var(--text-main)', fontWeight: '500' }}>$67,241.10</td>
+                  <td style={{ padding: '1.25rem', color: 'var(--text-main)', fontWeight: '500' }}>{formatCurrency(67241.10)}</td>
                   <td style={{ padding: '1.25rem', fontWeight: '500', color: 'var(--accent-primary)' }}>+4.12%</td>
                   <td style={{ padding: '1.25rem' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
@@ -123,7 +123,7 @@ const Portfolio = () => {
                       <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem', width: '30px' }}>45%</span>
                     </div>
                   </td>
-                  <td style={{ padding: '1.25rem', fontWeight: '600', color: 'var(--text-main)', textAlign: 'right', fontSize: '1.1rem' }}>$561,866</td>
+                  <td style={{ padding: '1.25rem', fontWeight: '600', color: 'var(--text-main)', textAlign: 'right', fontSize: '1.1rem' }}>{formatCurrency(561866)}</td>
                 </tr>
               )}
             </tbody>

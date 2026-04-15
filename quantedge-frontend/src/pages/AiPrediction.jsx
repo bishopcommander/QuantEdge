@@ -5,7 +5,7 @@ import StockChart from '../components/StockChart.jsx';
 import './AiPrediction.css';
 
 const AiPrediction = () => {
-  const { region, formatCurrency } = useRegion();
+  const { region, formatCurrency, getCurrencySymbol } = useRegion();
   const [symbol, setSymbol] = useState('TSLA');
   const [prediction, setPrediction] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -157,7 +157,7 @@ const AiPrediction = () => {
             <div>
               <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '0.5rem' }}>10-Day Historical & Future Projection</p>
               <h3 style={{ fontSize: '2rem', margin: 0, fontWeight: '700', display: 'flex', alignItems: 'center', gap: '1rem', color: prediction ? 'var(--text-main)' : 'var(--text-muted)' }}>
-                {prediction && chartData.length > 0 ? `${formatCurrency(chartData[0].price)} → ${formatCurrency(chartData[chartData.length-1].price)}` : '$--- - $---'}
+                {prediction && chartData.length > 0 ? `${formatCurrency(chartData[0].price)} → ${formatCurrency(chartData[chartData.length-1].price)}` : `${getCurrencySymbol()}--- - ${getCurrencySymbol()}---`}
                 {prediction && <span style={{ fontSize: '1rem', color: mainColor, background: 'transparent' }}>{isBuy ? '+' : '-'}14.2% Est.</span>}
               </h3>
             </div>

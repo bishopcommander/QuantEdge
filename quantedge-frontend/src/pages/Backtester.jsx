@@ -5,7 +5,7 @@ import StockChart from '../components/StockChart.jsx';
 import { runBacktest } from '../utils/backtestEngine.js';
 
 const Backtester = () => {
-  const { region, formatCurrency } = useRegion();
+  const { region, formatCurrency, getCurrencySymbol } = useRegion();
   const [symbol, setSymbol] = useState('BTC/USDT');
   const [capital, setCapital] = useState('100000');
   const [result, setResult] = useState(null);
@@ -220,7 +220,7 @@ const Backtester = () => {
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <label style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 'bold', textTransform: 'uppercase' }}>Initial Capital ($)</label>
+              <label style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 'bold', textTransform: 'uppercase' }}>Initial Capital ({getCurrencySymbol()})</label>
               <input type="number" className="glass-input" value={capital} onChange={(e) => setCapital(e.target.value)} style={{ width: '100%' }} />
             </div>
 
@@ -329,11 +329,11 @@ const Backtester = () => {
                       <td style={{ padding: '1.25rem 1.5rem' }}>
                         <span style={{ color: log.type === 'LONG' ? 'var(--accent-primary)' : 'var(--accent-red)', background: log.type === 'LONG' ? 'rgba(0,255,136,0.1)' : 'rgba(255,77,77,0.1)', padding: '0.2rem 0.5rem', borderRadius: '4px', fontSize: '0.75rem', fontWeight: 'bold' }}>{log.type}</span>
                       </td>
-                      <td style={{ padding: '1.25rem 1.5rem', color: 'var(--text-main)' }}>${log.entry}</td>
-                      <td style={{ padding: '1.25rem 1.5rem', color: 'var(--text-main)' }}>${log.exit}</td>
+                      <td style={{ padding: '1.25rem 1.5rem', color: 'var(--text-main)' }}>{formatCurrency(log.entry)}</td>
+                      <td style={{ padding: '1.25rem 1.5rem', color: 'var(--text-main)' }}>{formatCurrency(log.exit)}</td>
                       <td style={{ padding: '1.25rem 1.5rem', color: 'var(--text-muted)', fontSize: '0.8rem' }}>{log.reason}</td>
                       <td style={{ padding: '1.25rem 1.5rem', color: log.profit >= 0 ? 'var(--accent-primary)' : 'var(--accent-red)', textAlign: 'right', fontWeight: 'bold' }}>
-                        {log.profit >= 0 ? '+' : '-'}${Math.abs(log.profit).toFixed(2)}
+                        {log.profit >= 0 ? '+' : '-'}{formatCurrency(Math.abs(log.profit))}
                       </td>
                     </tr>
                   )) : (
