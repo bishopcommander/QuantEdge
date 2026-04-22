@@ -6,7 +6,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/portfolios")
-@CrossOrigin(origins = "http://localhost:5173")
 public class PortfolioController {
 
     @GetMapping

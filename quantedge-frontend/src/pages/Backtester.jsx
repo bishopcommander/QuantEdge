@@ -51,7 +51,9 @@ const Backtester = () => {
       // We purposefully fetch up to +200 days extra to allow indicator buffering (like 200 SMA)
       const fetchDays = days + 210; 
       
-      const response = await fetch(`http://localhost:8080/api/v1/market/history/${symbol.toUpperCase()}?days=${fetchDays}`);
+      // Replace forward slashes with hyphens to prevent URL routing issues on the backend
+      const formattedSymbol = symbol.toUpperCase().replace(/\//g, '-');
+      const response = await fetch(`http://localhost:8080/api/v1/market/history/${formattedSymbol}?days=${fetchDays}`);
       if (!response.ok) throw new Error("Failed to fetch market data");
       const historyData = await response.json();
       

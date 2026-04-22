@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/market")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
 public class MarketController {
 
     // A placeholder for the MarketData repository

@@ -15,7 +15,6 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/backtest")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
 public class BacktestController {
 
     private final BacktestService backtestService;

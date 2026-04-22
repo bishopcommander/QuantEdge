@@ -12,13 +12,13 @@ export const RegionProvider = ({ children }) => {
         const res = await fetch('https://open.er-api.com/v6/latest/USD');
         const data = await res.json();
         
-        // Fetch BTC rate separately from coindesk or approximate from er-api if unavailable
+        // Fetch BTC rate separately from Binance or approximate from er-api if unavailable
         let btcRate = rates.BTC;
         try {
-            const btcRes = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json');
+            const btcRes = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT');
             const btcData = await btcRes.json();
-            if(btcData?.bpi?.USD?.rate_float) {
-                btcRate = 1 / btcData.bpi.USD.rate_float;
+            if(btcData?.price) {
+                btcRate = 1 / parseFloat(btcData.price);
             }
         } catch (e) {
             console.error("Failed BTC fetch", e);
